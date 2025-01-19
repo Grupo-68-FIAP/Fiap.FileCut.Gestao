@@ -14,11 +14,8 @@
 				<PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
 		</ItemGroup>
 
-		<ItemGroup Condition="Exists('..\..\..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj')">
-				<ProjectReference Include="..\..\..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj"/>
+		<ItemGroup>
+		  <ProjectReference Include="..\..\libs\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj" />
 		</ItemGroup>
 
-		<ItemGroup Condition="!Exists('..\..\..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj')">
-				<PackageReference Include="Fiap.FileCut.Infra.Api" Version="1.0.0"/>
-		</ItemGroup>
 </Project>
