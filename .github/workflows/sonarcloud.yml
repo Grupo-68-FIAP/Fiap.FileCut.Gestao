@@ -45,8 +45,11 @@ jobs:
       - name: Authenticate to GitHub NuGet registry
         shell: powershell
         run: |
-          dotnet nuget add source https://nuget.pkg.github.com/Grupo-68-FIAP/index.json \
-            -n github -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+          dotnet nuget add source https://nuget.pkg.github.com/Grupo-68-FIAP/index.json `
+            -n github `
+            -u ${{ github.actor }} `
+            -p ${{ secrets.GITHUB_TOKEN }} `
+            --store-password-in-clear-text
 
       - name: Project clean
         run: dotnet clean "Fiap.FileCut.Gestao.sln"
