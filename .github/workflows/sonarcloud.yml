@@ -45,9 +45,6 @@ jobs:
       - name: Submodules update
         run: git submodule update --init --recursive
 
-      - name: Project clean
-        run: dotnet clean "Fiap.FileCut.Gestao.sln"
-
       - name: Project restore dependencies
         run: dotnet restore "Fiap.FileCut.Gestao.sln"
 
