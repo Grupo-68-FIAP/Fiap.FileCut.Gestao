@@ -43,6 +43,7 @@ jobs:
           dotnet tool update dotnet-coverageconverter  --tool-path .\.sonar\scanner
 
       - name: Check and remove existing GitHub Packages source
+        shell: bash
         run: |
           if dotnet nuget list source | grep -q "github"; then
             dotnet nuget remove source github
