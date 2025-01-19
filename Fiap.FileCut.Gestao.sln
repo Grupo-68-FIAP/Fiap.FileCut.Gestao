@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Gestao.Api", "src\Fiap.FileCut.Gestao.Api\Fiap.FileCut.Gestao.Api.csproj", "{28C903A2-F166-4FC9-905E-C3E8CF799794}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF952B06-A65F-4248-9B26-9AA5C7CF6BFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{0E19294D-3A76-4F8D-8A16-99ECB18C29C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FEB3502D-27CC-4A87-A8EB-659F4EFDFF1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Gestao.Api.UnitTests", "tests\Fiap.FileCut.Gestao.Api.UnitTests\Fiap.FileCut.Gestao.Api.UnitTests.csproj", "{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28C903A2-F166-4FC9-905E-C3E8CF799794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C903A2-F166-4FC9-905E-C3E8CF799794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C903A2-F166-4FC9-905E-C3E8CF799794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C903A2-F166-4FC9-905E-C3E8CF799794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28C903A2-F166-4FC9-905E-C3E8CF799794} = {AF952B06-A65F-4248-9B26-9AA5C7CF6BFC}
+		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2} = {FEB3502D-27CC-4A87-A8EB-659F4EFDFF1A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@Fiap.FileCut.GestaoApi_HostAddress = http://localhost:5252
+
+GET {{Fiap.FileCut.GestaoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
