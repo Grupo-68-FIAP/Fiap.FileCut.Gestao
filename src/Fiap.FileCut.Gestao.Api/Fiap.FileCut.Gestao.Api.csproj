@@ -15,7 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj" />
-  </ItemGroup>
+			<!-- Verifica se o diretório local da lib existe -->
+			<ProjectReference Include="..\..\..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj" Condition="Exists('..\..\..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj')" />
+
+			<!-- Se o diretório não existir, pega do GitHub Packages -->
+			<PackageReference Include="Fiap.FileCut.Infra.Api" Version="1.0.0" Condition="!Exists('..\..\..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj')" />
+	</ItemGroup>
 
 </Project>
