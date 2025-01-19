@@ -18,7 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 		.env = .env
 		.env-sample = .env-sample
 		LICENSE.txt = LICENSE.txt
-		nuget.config = nuget.config
 		README.md = README.md
 		.github\workflows\sonarcloud.yml = .github\workflows\sonarcloud.yml
 	EndProjectSection
