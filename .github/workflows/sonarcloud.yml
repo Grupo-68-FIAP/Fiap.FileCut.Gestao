@@ -41,16 +41,38 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
           dotnet tool update dotnet-coverageconverter  --tool-path .\.sonar\scanner
-  
-      - name: Test and analyze
+
+      - name: Authenticate to GitHub NuGet registry
+        shell: powershell
+        run: |
+          dotnet nuget add source https://nuget.pkg.github.com/Grupo-68-FIAP/index.json \
+            -n github -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+
+      - name: Project clean
+        run: dotnet clean "Fiap.FileCut.Gestao.sln"
+
+      - name: Project restore dependencies
+        run: dotnet restore "Fiap.FileCut.Gestao.sln"
+
+      - name: Project build 
+        run: dotnet build "Fiap.FileCut.Gestao.sln"
+
+      - name: Sonar analyze begin
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          dotnet clean "Fiap.FileCut.Gestao.sln"
-          dotnet build "Fiap.FileCut.Gestao.sln"
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Grupo-68-FIAP_Fiap.FileCut.Gestao" /o:"grupo-68-fiap" /d:sonar.token="$env:SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io"  /d:sonar.cs.vscoveragexml.reportsPaths="**.coveragexml" /d:sonar.cs.vstest.reportsPaths="**.trx"
+
+      - name: Project test and coverage
+        shell: powershell
+        run: |
           dotnet test "Fiap.FileCut.Gestao.sln" --collect "Code Coverage" --logger trx --results-directory "TestsResults"
           .\.sonar\scanner\dotnet-coverageconverter -f "." -p true -r
+
+      - name: Sonar analyze end
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        shell: powershell
+        run: |
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="$env:SONAR_TOKEN"
