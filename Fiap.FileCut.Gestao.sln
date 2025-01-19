@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FEB3502D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Gestao.Api.UnitTests", "tests\Fiap.FileCut.Gestao.Api.UnitTests\Fiap.FileCut.Gestao.Api.UnitTests.csproj", "{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Infra.Api", "..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj", "{E7AA04FF-F077-48AF-B71F-D1A752E66146}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{05A1479B-E215-4E85-950D-7A6390223145}"
 	ProjectSection(SolutionItems) = preProject
 		.env = .env
@@ -23,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Infra.Api", "..\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj", "{22A0C0B8-6028-4589-B21A-DE8C56F2431E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +38,10 @@ Global
 		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7AA04FF-F077-48AF-B71F-D1A752E66146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7AA04FF-F077-48AF-B71F-D1A752E66146}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7AA04FF-F077-48AF-B71F-D1A752E66146}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7AA04FF-F077-48AF-B71F-D1A752E66146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22A0C0B8-6028-4589-B21A-DE8C56F2431E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22A0C0B8-6028-4589-B21A-DE8C56F2431E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22A0C0B8-6028-4589-B21A-DE8C56F2431E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22A0C0B8-6028-4589-B21A-DE8C56F2431E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +49,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{28C903A2-F166-4FC9-905E-C3E8CF799794} = {AF952B06-A65F-4248-9B26-9AA5C7CF6BFC}
 		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2} = {FEB3502D-27CC-4A87-A8EB-659F4EFDFF1A}
-		{E7AA04FF-F077-48AF-B71F-D1A752E66146} = {0E19294D-3A76-4F8D-8A16-99ECB18C29C8}
+		{22A0C0B8-6028-4589-B21A-DE8C56F2431E} = {0E19294D-3A76-4F8D-8A16-99ECB18C29C8}
 	EndGlobalSection
 EndGlobal
