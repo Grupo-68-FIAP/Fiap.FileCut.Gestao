@@ -1,0 +1,26 @@
+services:
+  fiap.filecut.gestao.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      
+      - OPENID_AUTHORITY=${OPENID_AUTHORITY}
+      - OPENID_AUDIENCE=${OPENID_AUDIENCE}
+
+      - SMTP_SERVER=mail
+      - SMTP_PORT=1025
+      - SMTP_USERNAME=fakemail-noreplay@test.com
+    ports:
+      - "8080"
+      - "8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  mail:
+    image: haravich/fake-smtp-server
+    container_name: mail
+    ports:
+      - "1025:1025"
+      - "1080:1080" # portal aqui http://localhost:1080

@@ -17,6 +17,8 @@ namespace Fiap.FileCut.Gestao.Api
             builder.Services.AddJwtBearerAuthentication();
             builder.Services.AddSwaggerGen();
             builder.Services.AddEnvCors();
+            builder.Services.AddNotifications()
+                .EmailNotify(builder.Configuration);
 
             var app = builder.Build();
 

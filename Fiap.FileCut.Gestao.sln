@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Core", "libs\F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Infra.Storage", "libs\Fiap.FileCut\Fiap.FileCut.Infra.Storage\Fiap.FileCut.Infra.Storage.csproj", "{C80A7CE2-832D-4446-B5C5-FB11FA994418}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FAC492B8-E0E5-42C9-889D-4A16D333483B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{C80A7CE2-832D-4446-B5C5-FB11FA994418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C80A7CE2-832D-4446-B5C5-FB11FA994418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C80A7CE2-832D-4446-B5C5-FB11FA994418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAC492B8-E0E5-42C9-889D-4A16D333483B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC492B8-E0E5-42C9-889D-4A16D333483B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC492B8-E0E5-42C9-889D-4A16D333483B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC492B8-E0E5-42C9-889D-4A16D333483B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

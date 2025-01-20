@@ -1,0 +1,6 @@
+services:
+  fiap.filecut.gestao.api:
+    image: ${DOCKER_REGISTRY-}fiapfilecutgestaoapi
+    build:
+      context: .
+      dockerfile: src/Fiap.FileCut.Gestao.Api/Dockerfile
