@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Infra.Api", "libs\Fiap.FileCut\Fiap.FileCut.Infra.Api\Fiap.FileCut.Infra.Api.csproj", "{30BCD8ED-BFB7-4E80-BEC0-D4C8EEC16015}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Core", "libs\Fiap.FileCut\Fiap.FileCut.Core\Fiap.FileCut.Core.csproj", "{1F87EE25-F0A5-462E-BD12-8F2E8B706BAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Infra.Storage", "libs\Fiap.FileCut\Fiap.FileCut.Infra.Storage\Fiap.FileCut.Infra.Storage.csproj", "{C80A7CE2-832D-4446-B5C5-FB11FA994418}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,14 @@ Global
 		{30BCD8ED-BFB7-4E80-BEC0-D4C8EEC16015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30BCD8ED-BFB7-4E80-BEC0-D4C8EEC16015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30BCD8ED-BFB7-4E80-BEC0-D4C8EEC16015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F87EE25-F0A5-462E-BD12-8F2E8B706BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F87EE25-F0A5-462E-BD12-8F2E8B706BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F87EE25-F0A5-462E-BD12-8F2E8B706BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F87EE25-F0A5-462E-BD12-8F2E8B706BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80A7CE2-832D-4446-B5C5-FB11FA994418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80A7CE2-832D-4446-B5C5-FB11FA994418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80A7CE2-832D-4446-B5C5-FB11FA994418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80A7CE2-832D-4446-B5C5-FB11FA994418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +62,7 @@ Global
 		{28C903A2-F166-4FC9-905E-C3E8CF799794} = {AF952B06-A65F-4248-9B26-9AA5C7CF6BFC}
 		{21B8548B-9766-44E8-A6FC-96B7F57AF6E2} = {FEB3502D-27CC-4A87-A8EB-659F4EFDFF1A}
 		{30BCD8ED-BFB7-4E80-BEC0-D4C8EEC16015} = {0E19294D-3A76-4F8D-8A16-99ECB18C29C8}
+		{1F87EE25-F0A5-462E-BD12-8F2E8B706BAF} = {0E19294D-3A76-4F8D-8A16-99ECB18C29C8}
+		{C80A7CE2-832D-4446-B5C5-FB11FA994418} = {0E19294D-3A76-4F8D-8A16-99ECB18C29C8}
 	EndGlobalSection
 EndGlobal
