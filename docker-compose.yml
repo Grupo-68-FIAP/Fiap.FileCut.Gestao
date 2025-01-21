@@ -1,6 +1,16 @@
 services:
   fiap.filecut.gestao.api:
+    depends_on:
+      - keycloak
     image: ${DOCKER_REGISTRY-}fiapfilecutgestaoapi
     build:
       context: .
       dockerfile: src/Fiap.FileCut.Gestao.Api/Dockerfile
+
+  fakemail:
+    image: haravich/fake-smtp-server
+    restart: always
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0
+    restart: always

@@ -1,5 +1,7 @@
 
 using Fiap.FileCut.Infra.Api.Configurations;
+using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
 
 namespace Fiap.FileCut.Gestao.Api
 {
@@ -12,29 +14,19 @@ namespace Fiap.FileCut.Gestao.Api
             // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddJwtBearerAuthentication();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerFC();
             builder.Services.AddEnvCors();
             builder.Services.AddNotifications()
                 .EmailNotify(builder.Configuration);
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
+            app.UseSwaggerFC();
             app.UseEnvCors();
-
             app.UseHttpsRedirection();
-
             app.UseAuth();
-
             app.MapControllers();
 
             app.Run();

@@ -1,5 +1,6 @@
 using Fiap.FileCut.Core.Interfaces.Services;
 using Fiap.FileCut.Core.Objects;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
 
@@ -14,27 +15,31 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
         private readonly INotifyService _notifyService;
 
         public WeatherForecastController(INotifyService notifyService,
             ILogger<WeatherForecastController> logger)
         {
             _notifyService = notifyService;
-            _logger = logger;
         }
 
+        [Authorize]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            var message = new FileCutMailMessage("test2@test.com")
+            var email = User.FindFirst("preferred_username")?.Value;
+            ArgumentNullException.ThrowIfNull(email);
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            ArgumentNullException.ThrowIfNull(userId);
+
+
+            var message = new FileCutMailMessage(email)
             {
                 Subject = "Test",
                 Body = "Test"
             };
 
-            _notifyService.Notify(new NotifyContext<FileCutMailMessage>(message, Guid.NewGuid()));
+            _notifyService.Notify(new NotifyContext<FileCutMailMessage>(message, new Guid(userId)));
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
