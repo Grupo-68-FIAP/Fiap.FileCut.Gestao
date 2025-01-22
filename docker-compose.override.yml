@@ -6,8 +6,8 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       
-      - OPENID_AUTHORITY=${OPENID_AUTHORITY}
-      - OPENID_AUDIENCE=${OPENID_AUDIENCE}
+      - OPENID_AUTHORITY=http://keycloak:8080/realms/sample
+      - OPENID_AUDIENCE=admin-cli
 
       - SMTP_SERVER=fakemail
       - SMTP_PORT=1025
