@@ -1,35 +1,26 @@
 
-using Fiap.FileCut.Infra.Api.Configurations;
-using Microsoft.Net.Http.Headers;
-using Microsoft.OpenApi.Models;
+using Fiap.FileCut.Infra.Api;
 
-namespace Fiap.FileCut.Gestao.Api
+namespace Fiap.FileCut.Gestao.Api;
+
+public static class Program
 {
-    public static class Program
+    public async static Task Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        await builder.ConfigureFileCutGestaoApi();
 
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddJwtBearerAuthentication();
-            builder.Services.AddSwaggerFC();
-            builder.Services.AddEnvCors();
-            builder.Services.AddNotifications()
-                .EmailNotify(builder.Configuration);
+        var app = builder.Build();
 
-            var app = builder.Build();
+        await app.InitializeFileCutGestaoApi();
+        app.MapControllers();
 
-            app.UseSwaggerFC();
-            app.UseEnvCors();
-            app.UseHttpsRedirection();
-            app.UseAuth();
-            app.MapControllers();
+        var scope = app.Services.CreateScope();
+        await scope.ScopedFileCutGestaoApi();
 
-            app.Run();
-        }
+        await app.RunAsync();
     }
 }
