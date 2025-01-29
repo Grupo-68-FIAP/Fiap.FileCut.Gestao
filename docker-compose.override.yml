@@ -12,6 +12,8 @@ services:
       - SMTP_SERVER=fakemail
       - SMTP_PORT=1025
       - SMTP_USERNAME=fakemail-noreplay@test.com
+
+      - RABBITMQ_CONNECTION_STRING=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq:5672
     ports:
       - "8080"
       - "8081"
