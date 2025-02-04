@@ -25,7 +25,7 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
 
             logger.LogDebug("Listando todos os vídeos do usuário {UserId}", userId);
 
-            var videoList = await gestaoApplication.ListAllVideosAsync(new Guid(userId));
+            var videoList = await gestaoApplication.ListAllVideosAsync(new Guid(userId), CancellationToken.None);
             return Ok(videoList);
         }
 
@@ -40,7 +40,7 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
 
             logger.LogDebug("Buscando vídeo {VideoName} do usuário {UserId}", videoName, userId);
 
-            var video = await gestaoApplication.GetVideoAsync(new Guid(userId), videoName);
+            var video = await gestaoApplication.GetVideoAsync(new Guid(userId), videoName, CancellationToken.None);
             return File(video.OpenReadStream(), "video/mp4");
         }
 
@@ -55,7 +55,7 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
 
             logger.LogDebug("Buscando status do vídeo {VideoName} do usuário {UserId}", videoName, userId);
 
-            var status = await gestaoApplication.GetVideoMetadataAsync(new Guid(userId), videoName);
+            var status = await gestaoApplication.GetVideoMetadataAsync(new Guid(userId), videoName, CancellationToken.None);
             return Ok(status);
         }
     }

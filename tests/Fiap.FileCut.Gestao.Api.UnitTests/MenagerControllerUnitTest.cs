@@ -17,7 +17,7 @@ public class MenagerControllerUnitTest
         var userId = Guid.NewGuid();
         var email = "test@example.com";
         var gestaoApplication = new Mock<IGestaoApplication>();
-        gestaoApplication.Setup(x => x.ListAllVideosAsync(It.IsAny<Guid>()))
+        gestaoApplication.Setup(x => x.ListAllVideosAsync(It.IsAny<Guid>(), CancellationToken.None))
             .ReturnsAsync([new("video1.mp4"), new("video2.mp4"), new("video3.mp4")]);
         var logger = new Mock<ILogger<MenagerController>>();
         var controller = new MenagerController(gestaoApplication.Object, logger.Object);
@@ -41,7 +41,7 @@ public class MenagerControllerUnitTest
         var video = new Mock<IFormFile>();
         video.Setup(x => x.OpenReadStream())
             .Returns(new MemoryStream());
-        gestaoApplication.Setup(x => x.GetVideoAsync(userId, videoName))
+        gestaoApplication.Setup(x => x.GetVideoAsync(userId, videoName, CancellationToken.None))
             .ReturnsAsync(video.Object);
         var logger = new Mock<ILogger<MenagerController>>();
         var controller = new MenagerController(gestaoApplication.Object, logger.Object);
@@ -61,7 +61,7 @@ public class MenagerControllerUnitTest
         var email = "test@example.com";
         var videoName = "video1.mp4";
         var gestaoApplication = new Mock<IGestaoApplication>();
-        gestaoApplication.Setup(x => x.GetVideoMetadataAsync(userId, videoName))
+        gestaoApplication.Setup(x => x.GetVideoMetadataAsync(userId, videoName, CancellationToken.None))
             .ReturnsAsync(new VideoMetadata(videoName));
         var logger = new Mock<ILogger<MenagerController>>();
         var controller = new MenagerController(gestaoApplication.Object, logger.Object);
