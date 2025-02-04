@@ -1,5 +1,6 @@
 using Fiap.FileCut.Core.Interfaces.Applications;
 using Fiap.FileCut.Core.Objects;
+using Fiap.FileCut.Core.Objects.Enums;
 using Fiap.FileCut.Gestao.Api.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
