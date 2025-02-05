@@ -30,30 +30,37 @@ public class MenagerControllerUnitTest
         Assert.Equal(3, videos.Count());
     }
 
-    [Fact]
-    public async Task GetVideoAsync_WhenCalled_ReturnsVideo()
-    {
-        // Arrange
-        var userId = Guid.NewGuid();
-        var email = "test@example.com";
-        var videoName = "video1.mp4";
-        var gestaoApplication = new Mock<IGestaoApplication>();
-        var video = new Mock<IFormFile>();
-        video.Setup(x => x.OpenReadStream())
-            .Returns(new MemoryStream());
-        gestaoApplication.Setup(x => x.GetVideoAsync(userId, videoName, CancellationToken.None))
-            .ReturnsAsync(video.Object);
-        var logger = new Mock<ILogger<MenagerController>>();
-        var controller = new MenagerController(gestaoApplication.Object, logger.Object);
-        controller.SetUserAuth(userId, email);
-        // Act
-        var result = await controller.GetVideoAsync(videoName);
-        // Assert
-        var fileResult = Assert.IsAssignableFrom<FileResult>(result);
-        Assert.Equal("video/mp4", fileResult.ContentType);
-    }
+	[Fact]
+	public async Task GetVideoAsync_WhenCalled_ReturnsVideo()
+	{
+		// Arrange
+		var userId = Guid.NewGuid();
+		var email = "test@example.com";
+		var videoName = "video1.mp4";
 
-    [Fact]
+		var gestaoApplication = new Mock<IGestaoApplication>();
+
+		var memoryStream = new MemoryStream();
+		var video = new FileStreamResult(videoName, memoryStream);
+
+		gestaoApplication.Setup(x => x.GetVideoAsync(userId, videoName, CancellationToken.None))
+			.ReturnsAsync(video);
+
+		var logger = new Mock<ILogger<MenagerController>>();
+		var controller = new MenagerController(gestaoApplication.Object, logger.Object);
+		controller.SetUserAuth(userId, email);
+
+		// Act
+		var result = await controller.GetVideoAsync(videoName);
+
+		// Assert
+		var fileResult = Assert.IsType<FileStreamResult>(result);
+		Assert.Equal("video/mp4", fileResult.ContentType);
+		Assert.Equal(videoName, fileResult.FileDownloadName);
+	}
+
+
+	[Fact]
     public async Task GetVideoStatusAsync_WhenCalled_ReturnsVideoStatus()
     {
         // Arrange

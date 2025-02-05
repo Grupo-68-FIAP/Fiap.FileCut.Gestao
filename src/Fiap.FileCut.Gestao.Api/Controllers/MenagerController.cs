@@ -41,8 +41,8 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
             logger.LogDebug("Buscando vídeo {VideoName} do usuário {UserId}", videoName, userId);
 
             var video = await gestaoApplication.GetVideoAsync(new Guid(userId), videoName, CancellationToken.None);
-            return File(video.OpenReadStream(), "video/mp4");
-        }
+			return File(video.FileStream, "video/mp4", video.FileName);
+		}
 
         [Authorize]
         [HttpGet("{videoName}/status", Name = "videoStatus")]
