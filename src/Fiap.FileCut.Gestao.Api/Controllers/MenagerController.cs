@@ -1,9 +1,6 @@
 using Fiap.FileCut.Core.Interfaces.Applications;
-using Fiap.FileCut.Core.Interfaces.Services;
-using Fiap.FileCut.Core.Objects;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Mail;
 
 namespace Fiap.FileCut.Gestao.Api.Controllers
 {
@@ -13,7 +10,7 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
         IGestaoApplication gestaoApplication,
         ILogger<MenagerController> logger) : ControllerBase
     {
-        
+
         [Authorize]
         [HttpGet(Name = "videos")]
         public async Task<IActionResult> ListAllVideosAsync()
@@ -41,7 +38,7 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
             logger.LogDebug("Buscando vídeo {VideoName} do usuário {UserId}", videoName, userId);
 
             var video = await gestaoApplication.GetVideoAsync(new Guid(userId), videoName, CancellationToken.None);
-            return File(video.OpenReadStream(), "video/mp4");
+            return File(video.FileStream, "video/mp4");
         }
 
         [Authorize]

@@ -1,7 +1,6 @@
 using Fiap.FileCut.Core.Interfaces.Applications;
 using Fiap.FileCut.Core.Objects;
 using Fiap.FileCut.Gestao.Api.Controllers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -38,11 +37,10 @@ public class MenagerControllerUnitTest
         var email = "test@example.com";
         var videoName = "video1.mp4";
         var gestaoApplication = new Mock<IGestaoApplication>();
-        var video = new Mock<IFormFile>();
-        video.Setup(x => x.OpenReadStream())
-            .Returns(new MemoryStream());
-        gestaoApplication.Setup(x => x.GetVideoAsync(userId, videoName, CancellationToken.None))
-            .ReturnsAsync(video.Object);
+        var video = new Fiap.FileCut.Infra.Storage.Shared.Models.FileStreamResult(videoName, new MemoryStream());
+        gestaoApplication
+            .Setup(x => x.GetVideoAsync(userId, videoName, CancellationToken.None))
+            .ReturnsAsync(video);
         var logger = new Mock<ILogger<MenagerController>>();
         var controller = new MenagerController(gestaoApplication.Object, logger.Object);
         controller.SetUserAuth(userId, email);
