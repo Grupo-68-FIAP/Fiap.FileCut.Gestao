@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace Fiap.FileCut.Gestao.Api.Controllers
 {
     [ApiController]
-    [Route("menager")]
+    [Route("api/v1/videos")]
     public class MenagerController(
         IGestaoApplication gestaoApplication,
         ILogger<MenagerController> logger) : ControllerBase
     {
 
         [Authorize]
-        [HttpGet(Name = "videos")]
+        [HttpGet]
         public async Task<IActionResult> ListAllVideosAsync()
         {
             var email = User.FindFirst("preferred_username")?.Value;
@@ -27,7 +27,7 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
         }
 
         [Authorize]
-        [HttpGet("{videoName}", Name = "video")]
+        [HttpGet("{videoName}")]
         public async Task<IActionResult> GetVideoAsync(string videoName)
         {
             var email = User.FindFirst("preferred_username")?.Value;
@@ -42,17 +42,15 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
         }
 
         [Authorize]
-        [HttpGet("{videoName}/status", Name = "videoStatus")]
-        public async Task<IActionResult> GetVideoMetadataAsync(string videoName)
+        [HttpGet("{videoName}/frames")]
+        public async Task<IActionResult> GetVideoFramesAsync(string videoName)
         {
             var email = User.FindFirst("preferred_username")?.Value;
             ArgumentNullException.ThrowIfNull(email);
             var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
             ArgumentNullException.ThrowIfNull(userId);
 
-            logger.LogDebug("Buscando status do vídeo {VideoName} do usuário {UserId}", videoName, userId);
-
-            var status = await gestaoApplication.GetVideoMetadataAsync(new Guid(userId), videoName, CancellationToken.None);
+            var status = await gestaoApplication.GetFramesAsync(new Guid(userId), videoName, CancellationToken.None);
             return Ok(status);
         }
     }
