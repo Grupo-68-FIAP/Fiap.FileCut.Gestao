@@ -69,9 +69,8 @@ public class MenagerControllerUnitTest
         // Act
         var result = await controller.GetVideoFramesAsync(videoName);
         // Assert
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        var video = Assert.IsType<Fiap.FileCut.Infra.Storage.Shared.Models.FileStreamResult>(okResult.Value);
-        Assert.Equal(videoName, video.FileName);
-        Assert.NotNull(video.FileStream);
+        var okResult = Assert.IsType<FileStreamResult>(result);
+        Assert.Equal(videoName, okResult.FileDownloadName);
+        Assert.NotNull(okResult.FileStream);
     }
 }

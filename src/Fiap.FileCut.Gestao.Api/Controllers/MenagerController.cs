@@ -38,7 +38,7 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
             logger.LogDebug("Buscando vídeo {VideoName} do usuário {UserId}", videoName, userId);
 
             var video = await gestaoApplication.GetVideoAsync(new Guid(userId), videoName, CancellationToken.None);
-            return File(video.FileStream, "video/mp4");
+            return File(video.FileStream, "video/mp4", videoName);
         }
 
         [Authorize]
@@ -51,7 +51,8 @@ namespace Fiap.FileCut.Gestao.Api.Controllers
             ArgumentNullException.ThrowIfNull(userId);
 
             var status = await gestaoApplication.GetFramesAsync(new Guid(userId), videoName, CancellationToken.None);
-            return Ok(status);
+            var zip = Path.ChangeExtension(videoName, ".zip");
+            return File(status.FileStream, "application/zip", zip);
         }
     }
 }
